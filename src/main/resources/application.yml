@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: word-counter
+
+server:
+  port: 8080
+
+
