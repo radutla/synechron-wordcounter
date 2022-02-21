@@ -14,6 +14,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class WordCounterApplication implements CommandLineRunner {
 
+    @Autowired
+    private WordCounterRepository wordCounterRepository;
+    @Autowired
+    private WordTranslatorService wordTranslatorService;
+
     public WordCounterApplication() {
     }
 
@@ -21,15 +26,9 @@ public class WordCounterApplication implements CommandLineRunner {
         SpringApplication.run(WordCounterApplication.class, args);
     }
 
-    @Autowired
-    private WordCounterRepository wordCounterRepository;
-
-    @Autowired
-    private WordTranslatorService wordTranslatorService;
-
     @Bean
-    public WordCounterService getWordCountService(){
-        return  new WordCounterService(wordCounterRepository, wordTranslatorService);
+    public WordCounterService getWordCountService() {
+        return new WordCounterService(wordCounterRepository, wordTranslatorService);
     }
 
     //TODO the following method can be extended if this has to run as stand alone application

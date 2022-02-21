@@ -18,14 +18,11 @@ import static com.synechron.wordcounter.service.Require.requireNonNull;
 @Service
 public class WordCounterService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(WordCounterService.class);
     @Autowired
-    private WordCounterRepository wordCounterRepository;
-
+    private final WordCounterRepository wordCounterRepository;
     @Autowired
-    private WordTranslatorService wordTranslatorService;
-
-
-    private static final Logger LOGGER= LoggerFactory.getLogger(WordCounterService.class);
+    private final WordTranslatorService wordTranslatorService;
 
 
     public WordCounterService(WordCounterRepository wordCounterRepository, WordTranslatorService wordTranslatorService) {
@@ -33,7 +30,7 @@ public class WordCounterService {
         this.wordTranslatorService = wordTranslatorService;
     }
 
-    public WordCount add(String word){
+    public WordCount add(String word) {
 
         requireNonNull(word, "word cannot be null");
 
@@ -42,7 +39,7 @@ public class WordCounterService {
         try {
             translatedWord = wordTranslatorService.translate(word);
             word = translatedWord;
-            wordCount =wordCounterRepository.add(word);
+            wordCount = wordCounterRepository.add(word);
 
         } catch (TranslationFailedException | PersistenceFailedException e) {
             LOGGER.error(e.getMessage());
@@ -50,11 +47,11 @@ public class WordCounterService {
         return wordCount;
     }
 
-    public Optional<WordCount> get (String word){
+    public Optional<WordCount> get(String word) {
 
         requireNonNull(word, "word cannot be null");
         try {
-            return  wordCounterRepository.findBy(word);
+            return wordCounterRepository.findBy(word);
         } catch (DataRetrievalException e) {
             LOGGER.error(e.getMessage());
         }
@@ -63,7 +60,7 @@ public class WordCounterService {
 
     public List<WordCount> getAll() {
         try {
-            return  wordCounterRepository.findAll();
+            return wordCounterRepository.findAll();
         } catch (DataRetrievalException e) {
             LOGGER.error(e.getMessage());
         }

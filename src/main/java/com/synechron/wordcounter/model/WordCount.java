@@ -10,8 +10,7 @@ public class WordCount {
         this.occurrence = occurrence;
     }
 
-    public static WordCount of(String value, Long occurrence)
-    {
+    public static WordCount of(String value, Long occurrence) {
         return new WordCount(value, occurrence);
     }
 

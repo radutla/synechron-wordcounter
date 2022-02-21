@@ -5,12 +5,15 @@
 Have yml files to be able to deploy it on cloud
 
 ### Environment:
+
 - Java version: 1.8
 - Maven version: 3.*
 - Spring Boot version: 2.2.1.RELEASE
 
 ### Data:
+
 Example of a wordcount data JSON object:
+
 ```
     "word": "sample",
     "occurrence": 1,
@@ -18,8 +21,9 @@ Example of a wordcount data JSON object:
 ```
 
 ### Requirements:
-The REST service exposed the `/wordcounter` endpoint, 
-which allows users to add words and find the number of times each word was added.
+
+The REST service exposed the `/wordcounter` endpoint, which allows users to add words and find the number of times each
+word was added.
 
 **POST** request to `/wordcounter/add`:
 
@@ -40,15 +44,21 @@ which allows users to add words and find the number of times each word was added
 - the response code is 200, and the response body is an array of all wordcount objects
 
 ### Commands
-- run: 
+
+- run:
+
 ```bash
 mvn clean package; java -jar target/wordcounter-1.0.jar
 ```
-- install: 
+
+- install:
+
 ```bash
 mvn clean install
 ```
-- test: 
+
+- test:
+
 ```bash
 mvn clean test
 ```

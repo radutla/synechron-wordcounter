@@ -32,17 +32,17 @@ public class WordCounterRepository implements DummyAppMemoryRepository {
     }
 
     @Override
-    public Optional<WordCount> findBy (String word) throws DataRetrievalException {
+    public Optional<WordCount> findBy(String word) throws DataRetrievalException {
         Long occurrence = existingWordData.get(word);
         WordCount wordCount = null;
-        if(occurrence != null){
+        if (occurrence != null) {
             wordCount = new WordCount(word, occurrence);
         }
         return Optional.ofNullable(wordCount);
     }
 
     @Override
-    public List<WordCount> findAll() throws DataRetrievalException{
+    public List<WordCount> findAll() throws DataRetrievalException {
         return existingWordData.entrySet().stream()
                 .map(entry -> new WordCount(entry.getKey(), entry.getValue())).collect(Collectors.toList());
     }

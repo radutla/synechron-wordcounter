@@ -31,8 +31,7 @@ public class WordCounterServiceTest {
     private WordCounterRepository repository;
 
     @Before
-    public void setup ()
-    {
+    public void setup() {
         repository = mock(WordCounterRepository.class);
         WordTranslatorService wordTranslatorService = mock(WordTranslatorService.class);
         wordCounterService = new WordCounterService(repository, wordTranslatorService);
@@ -40,7 +39,7 @@ public class WordCounterServiceTest {
 
 
     @org.junit.Test
-    public void testAddSuccess () throws PersistenceFailedException {
+    public void testAddSuccess() throws PersistenceFailedException {
         WordCount wordCount = stubExpected();
         when(repository.add(any())).thenReturn(wordCount);
         WordCount response = wordCounterService.add("example");
@@ -50,7 +49,7 @@ public class WordCounterServiceTest {
     }
 
     @org.junit.Test
-    public void testAddFailure () throws PersistenceFailedException {
+    public void testAddFailure() throws PersistenceFailedException {
         when(repository.add(null)).thenReturn(null);
         assertThrows(IllegalArgumentException.class, () -> {
             wordCounterService.add(null);
@@ -58,7 +57,7 @@ public class WordCounterServiceTest {
     }
 
     @org.junit.Test
-    public void testGetSuccess () throws DataRetrievalException {
+    public void testGetSuccess() throws DataRetrievalException {
         WordCount wordCount = stubExpected();
         when(repository.findBy(any(String.class))).thenReturn(Optional.of(wordCount));
         Optional<WordCount> response = wordCounterService.get("example");
@@ -67,7 +66,7 @@ public class WordCounterServiceTest {
     }
 
     @org.junit.Test
-    public void testGetFailure () throws DataRetrievalException {
+    public void testGetFailure() throws DataRetrievalException {
         when(repository.findBy(null)).thenReturn(null);
         assertThrows(IllegalArgumentException.class, () -> {
             wordCounterService.get(null);
@@ -75,7 +74,7 @@ public class WordCounterServiceTest {
     }
 
     @org.junit.Test
-    public void testGetNoData () throws DataRetrievalException {
+    public void testGetNoData() throws DataRetrievalException {
         WordCount wordCount = stubExpected();
         when(repository.findBy("notexists")).thenReturn(Optional.empty());
         assertFalse(wordCounterService.get("not").isPresent());
@@ -83,7 +82,7 @@ public class WordCounterServiceTest {
     }
 
     @org.junit.Test
-    public void testGetAllSuccess () throws DataRetrievalException {
+    public void testGetAllSuccess() throws DataRetrievalException {
         WordCount wordCount = stubExpected();
         when(repository.findAll()).thenReturn(Collections.singletonList(wordCount));
         List<WordCount> response = wordCounterService.getAll();
@@ -92,7 +91,7 @@ public class WordCounterServiceTest {
     }
 
     @org.junit.Test
-    public void testGetAllNoData () throws DataRetrievalException {
+    public void testGetAllNoData() throws DataRetrievalException {
         when(repository.findAll()).thenReturn(Collections.emptyList());
         assertTrue(wordCounterService.getAll().isEmpty());
     }

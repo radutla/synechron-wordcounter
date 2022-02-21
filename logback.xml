@@ -1,6 +1,6 @@
 <configuration>
-    <property name="LOG_ROOT" value="c:/temp/logs" />
-    <property name="LOG_FILE_NAME" value="application" />
+    <property name="LOG_ROOT" value="c:/temp/logs"/>
+    <property name="LOG_FILE_NAME" value="application"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -29,7 +29,7 @@
     </logger>
 
     <root level="ERROR">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
     </root>
 </configuration>
