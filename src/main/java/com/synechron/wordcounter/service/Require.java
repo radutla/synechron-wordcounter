@@ -15,17 +15,5 @@ public final class Require {
         }
         return t;
     }
-
-    public static int requireNonNegative(final int value, final String msg) {
-        if (value < 0)
-            throw new IllegalArgumentException(msg);
-        return value;
-    }
-
-    public static float requireNonNegative(final float value, final String msg) {
-        if (value < 0.0f)
-            throw new IllegalArgumentException(msg);
-        return value;
-    }
 }
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface DummyAppMemoryRepository {
 
-    WordCount add(String word) throws PersistenceFailedException;
+    WordCount add(String word, String translatedWord) throws PersistenceFailedException;
 
     Optional<WordCount> findBy(String word) throws DataRetrievalException;
 

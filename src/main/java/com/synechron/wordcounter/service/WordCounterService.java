@@ -34,12 +34,9 @@ public class WordCounterService {
 
         requireNonNull(word, "word cannot be null");
 
-        String translatedWord;
         WordCount wordCount = null;
         try {
-            translatedWord = wordTranslatorService.translate(word);
-            word = translatedWord;
-            wordCount = wordCounterRepository.add(word);
+            wordCount = wordCounterRepository.add(word, wordTranslatorService.translate(word));
 
         } catch (TranslationFailedException | PersistenceFailedException e) {
             LOGGER.error(e.getMessage());

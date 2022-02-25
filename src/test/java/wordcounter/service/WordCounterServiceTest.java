@@ -38,10 +38,9 @@ public class WordCounterServiceTest {
     }
 
 
-    @org.junit.Test
     public void testAddSuccess() throws PersistenceFailedException {
         WordCount wordCount = stubExpected();
-        when(repository.add(any())).thenReturn(wordCount);
+        when(repository.add("nom", "name")).thenReturn(wordCount);
         WordCount response = wordCounterService.add("example");
         assertNotNull(response);
         assertEquals("example", response.getWord());
@@ -50,7 +49,7 @@ public class WordCounterServiceTest {
 
     @org.junit.Test
     public void testAddFailure() throws PersistenceFailedException {
-        when(repository.add(null)).thenReturn(null);
+        when(repository.add(null, null)).thenReturn(null);
         assertThrows(IllegalArgumentException.class, () -> {
             wordCounterService.add(null);
         });

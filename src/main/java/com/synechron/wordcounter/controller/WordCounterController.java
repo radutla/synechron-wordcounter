@@ -31,13 +31,13 @@ public class WordCounterController {
         LOGGER.info("request entered add api with path param : {}", word);
 
         if (!WordValidator.isValidWord(word)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Bad Request", HttpStatus.BAD_REQUEST);
         }
         WordCount wordCount = wordCounterService.add(word);
         if (wordCount != null) {
             return new ResponseEntity<>(wordCount, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>("error occurred", HttpStatus.CONFLICT);
+        return new ResponseEntity<>("Error occurred", HttpStatus.CONFLICT);
     }
 
     @GetMapping(value = "/find", produces = "application/json")

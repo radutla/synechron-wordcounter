@@ -1,3 +1,4 @@
+/*
 package com.synechron.wordcounter.repository;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -9,20 +10,17 @@ public class WordCountDataConfig {
     private static WordCountDataConfig instance;
     private ConcurrentMap<String, Long> concurrentMap;
 
-
     private WordCountDataConfig() {
     }
 
     public static WordCountDataConfig getInstance() {
-        WordCountDataConfig result = instance;
-        if (result == null) {
+        if (instance == null) {
             synchronized (mutex) {
-                result = instance;
-                if (result == null)
-                    instance = result = new WordCountDataConfig();
+                if (instance == null)
+                    instance = new WordCountDataConfig();
             }
         }
-        return result;
+        return instance;
     }
 
 
@@ -37,3 +35,4 @@ public class WordCountDataConfig {
     }
 
 }
+*/

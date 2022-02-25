@@ -1,6 +1,7 @@
 ## Word Counter SpringBoot Application
 
-##### A Simple word counter application built on Java 8 with spring boot framework. Swagger API specification can be seen on the url http://localhost:8080/swagger-ui.html
+##### A Simple word counter application built on Java 8 with spring boot framework. Swagger API specification can be seen on the 
+url http://localhost:8080/swagger-ui.html
 
 Have yml files to be able to deploy it on cloud
 
